@@ -1,0 +1,63 @@
+[build-system]
+requires = ["flit_core >=3.7,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "cbsd"
+description = "Consistency-based Sheaf Diffusion"
+dynamic = ["version"]
+authors = [
+    {name = "Filippo Guerranti", email = "f.guerranti@tum.de"},
+    {name = "David Reifferscheidt", email = "david.reifferscheidt@tum.de"},
+]
+dependencies = [
+    # PyTorch etc.
+    "torch ~= 2.0.1",
+    "torch-householder ~= 1.0.1",
+    "torch-geometric ~= 2.3.1",
+    "torch-scatter ~= 2.1.1",
+    "torch-sparse ~= 0.6.17",
+    "pytorch-lightning ~= 1.7",
+    "torchmetrics",
+    
+    # General science & ml
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "pandas",
+
+    # Plotting & visualization
+    "matplotlib",
+    "seaborn",
+
+    # Data
+    "ogb",
+
+    # Utilities
+    "tqdm",
+    "rich",
+    "ipython",
+    "ipdb",
+    "jupyterlab",
+    "ipympl",
+    "torchtyping",
+    "seml",
+    "typeguard == 2.13.3",
+    "wandb",
+    "omegaconf",
+    "hydra-core",
+    "hydra-submitit-launcher",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 80
+target-version = ["py310"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"

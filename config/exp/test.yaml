@@ -1,0 +1,16 @@
+# @package _global_
+defaults:
+  - override /model: ~
+
+# uncomment the following lines to override the defaults parameters for the trainer
+trainer:
+  max_epochs: 50 
+
+wandb:
+  group: TEST_${model.name}_${data.name}
+
+data.split_idx: 1
+model.hidden_channels: 16
+model.num_layers: 2
+task.optimizer.lr: 0.01
+seed: 3044291017

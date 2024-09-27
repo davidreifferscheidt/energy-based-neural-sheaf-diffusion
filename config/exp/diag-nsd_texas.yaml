@@ -1,0 +1,24 @@
+# @package _global_
+defaults:
+  - override /data: texas
+  - override /model: diag-nsd
+  - override /hydra/launcher: slurm
+
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: diag-nsd_texas_new
+
+hydra:
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      data.split_idx: range(0, 10)
+      seed: 3044291017 #, 29297748, 115944586, 1193614241, 4217974420
+
+
+

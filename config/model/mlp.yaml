@@ -1,0 +1,5 @@
+name: mlp
+
+hidden_channels: 16
+num_layers: 2
+dropout: 0.5

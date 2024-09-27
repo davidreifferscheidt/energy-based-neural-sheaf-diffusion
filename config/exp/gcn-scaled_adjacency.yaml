@@ -1,0 +1,23 @@
+# @package _global_
+defaults:
+  - override /data: texas
+  - override /model: energy-gcn
+  - override /hydra/launcher: slurm
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: gcn-scaled_adjacency
+
+hydra:
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      data: texas, wisconsin, cora, citeseer
+      data.split_idx: range(0, 10)
+      model.num_layers: 3
+      model.residual: False, True
+      seed: 3044291017 #, 29297748, 115944586, 1193614241, 4217974420 #, 1064569471, 814137701, 3768068460, 3450973516, 1787449441, 1254175394, 67056219, 1295471370, 2854307242, 1768874893

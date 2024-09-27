@@ -1,0 +1,23 @@
+# @package _global_
+defaults:
+  - override /data: squirrel
+  - override /model: gcn
+  - override /hydra/launcher: slurm
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: gcn_squirrel
+
+hydra:
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      data.split_idx: range(0, 10)
+      model.hidden_channels: 32, 64
+      model.num_layers: 2, 3, 4
+      task.optimizer.lr: 0.01, 0.001
+      seed: 3044291017, 29297748, 115944586, 1193614241, 4217974420 #, 1064569471, 814137701, 3768068460, 3450973516, 1787449441, 1254175394, 67056219, 1295471370, 2854307242, 1768874893

@@ -1,0 +1,25 @@
+# @package _global_
+defaults:
+  - override /data: ~
+  - override /model: gat
+  - override /hydra/launcher: slurm
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: ${model.name}_${data.name}
+
+hydra:
+  launcher:
+    partition: gpu_large
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      data.split_idx: range(0, 10)
+      model.hidden_channels: 32, 64
+      model.num_layers: 2, 3, 4
+      task.optimizer.lr: 0.01, 0.001
+      seed: 3044291017, 29297748, 115944586, 1193614241, 4217974420

@@ -1,0 +1,8 @@
+defaults:
+  - submitit_local
+
+cpus_per_task: 2
+
+# Do not requeue jobs
+timeout_min: 1440
+mem_gb: 64

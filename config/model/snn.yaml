@@ -1,0 +1,27 @@
+name: snn
+
+hidden_channels: 64
+num_layers: 4
+dropout: 0.7
+input_dropout: 0
+left_weights: True
+right_weights: True
+use_act: True
+
+sheaf_laplacian: 
+  type: consistent # possible arguments : random, connection, rand_edge, dense_connection, dense_rand_edge
+  d: 4
+  normalised: True
+  deg_normalised: False
+  add_lp: False 
+  add_hp: False
+  augmented: True
+  init: random
+  pretraining:
+    method: pca
+    num_channels: 32
+    lambda_reg: 0.0
+    reg: l1
+    lr: 0.1
+    eps: 0.1
+    normalize: False

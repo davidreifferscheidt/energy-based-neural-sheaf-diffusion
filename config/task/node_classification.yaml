@@ -1,0 +1,6 @@
+name: nodeclassification
+
+optimizer:
+  lr: 0.02
+  weight_decay: 0.0005
+  sheaf_decay: 0

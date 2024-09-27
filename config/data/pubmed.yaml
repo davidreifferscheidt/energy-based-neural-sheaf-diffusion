@@ -1,0 +1,8 @@
+name: pubmed
+
+collection: planetoid
+normalize_features: yes
+to_undirected: yes
+remove_self_loops: yes
+split_name: geom-gcn
+split_idx: 0

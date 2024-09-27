@@ -1,0 +1,10 @@
+name: squirrel
+
+collection: WikipediaNetwork
+normalize_features: yes
+to_undirected: yes
+remove_self_loops: yes
+split_idx: 0
+dim_reduction: no
+dr_method: pca
+dr_dimension: 128

@@ -1,0 +1,8 @@
+name: energy-acm
+
+hidden_channels: 32
+num_layers: 2
+dropout: 0.7
+use_act: True
+right_weights: True
+residual: False

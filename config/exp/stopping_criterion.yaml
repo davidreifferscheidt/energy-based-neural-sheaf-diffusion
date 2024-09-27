@@ -1,0 +1,33 @@
+# @package _global_
+defaults:
+  - override /data: texas
+  - override /model: snn
+  - override /hydra/launcher: slurm
+
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: stopping_criterion
+
+hydra:
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      data: texas, wisconsin, cornell, chameleon, citeseer, cora, squirrel, actor
+      model: snn
+      model.num_layers: 4
+      model.input_dropout: 0.0
+      model.hidden_channels: 32
+      model.sheaf_laplacian.type: consistent
+      model.sheaf_laplacian.init: random
+      model.sheaf_laplacian.d: 3
+      model.sheaf_laplacian.add_lp: False
+      model.sheaf_laplacian.add_hp: False
+      data.split_idx: range(0, 10)
+      model.sheaf_laplacian.pretraining.eps: -1, 1, 0.5, 0.1, 0.05, 0.01
+      model.sheaf_laplacian.pretraining.lambda_reg: 0.0
+      seed: 3044291017

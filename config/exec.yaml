@@ -1,0 +1,39 @@
+defaults:
+  - data: ~
+  - task: node_classification
+  - hydra: default
+  - model: ~
+  - _self_
+
+# path to the folder where you want to store the data, logs, and checkpoints (do not put the / at the end)
+store_data_path: /ceph/hdd/students/reiffers/cbsd
+
+data:
+  root: ${store_data_path}/datasets
+
+seed: ~
+eval_testset: yes
+
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: gpu
+  devices: 1
+  max_epochs: 10000
+  log_every_n_steps: 10
+  gradient_clip_val: ~
+  resume_from_checkpoint: ~
+
+early_stopping: 200
+
+wandb:
+  id: ~
+  entity: consistency-based-sheaf-diffusion
+  project: cbsd
+  group: ~
+  dir: ${store_data_path}
+  name: ~
+  mode: ~
+
+hydra:
+  job:
+    name: ${wandb.group}

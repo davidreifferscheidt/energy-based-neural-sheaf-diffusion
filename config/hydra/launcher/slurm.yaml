@@ -1,0 +1,14 @@
+defaults:
+  - submitit_slurm
+
+partition: gpu_all
+qos: studentprio
+gres: gpu:1
+exclude: mdsi-gpu01
+
+cpus_per_task: 2
+
+# Do not requeue jobs
+max_num_timeout: 0
+timeout_min: 1440
+mem_gb: 64

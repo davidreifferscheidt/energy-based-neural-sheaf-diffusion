@@ -1,0 +1,7 @@
+name: cornell
+
+collection: WebKB
+normalize_features: yes
+to_undirected: yes
+remove_self_loops: yes
+split_idx: 0

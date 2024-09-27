@@ -1,0 +1,18 @@
+name: diag-nsd
+
+d: 3
+add_lp: False
+add_hp: False
+hidden_channels: 20
+num_layers: 4
+normalised: True
+deg_normalised: False
+linear: False
+input_dropout: 0.0
+dropout: 0.7
+left_weights: True
+right_weights: True
+sparse_learner: True
+use_act: True
+sheaf_act: 'tanh'
+second_linear: False

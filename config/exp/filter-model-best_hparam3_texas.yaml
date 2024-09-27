@@ -1,0 +1,26 @@
+# @package _global_
+defaults:
+  - override /data: texas
+  - override /model: energy-acm
+  - override /hydra/launcher: slurm
+
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: filter-model-best_hparams4_texas
+hydra:
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      model.num_layers: 4
+      model.dropout: 0.5
+      model.hidden_channels: 64
+      task.optimizer.lr: 0.05
+      task.optimizer.weight_decay: 5e-4
+      data.split_idx: range(0,10)
+      seed: 3044291017
+      

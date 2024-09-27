@@ -1,0 +1,29 @@
+# @package _global_
+defaults:
+  - override /data: cora
+  - override /model: energy-acm
+  - override /hydra/launcher: slurm
+
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: filter-model-final_cora
+
+hydra:
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      model.num_layers: 2
+      model.dropout: 0.6
+      model.hidden_channels: 64
+      task.optimizer.lr: 0.1
+      task.optimizer.weight_decay: 1e-4
+      data.split_idx: range(0,10)
+      seed: 3044291017
+
+
+

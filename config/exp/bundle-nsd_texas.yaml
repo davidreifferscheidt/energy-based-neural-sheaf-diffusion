@@ -1,0 +1,36 @@
+# @package _global_
+defaults:
+  - override /data: texas
+  - override /model: bundle-nsd
+  - override /hydra/launcher: slurm
+
+
+# uncomment the following lines to override the defaults parameters for the trainer
+# trainer:
+#   max_epochs: 3000 
+
+wandb:
+  group: bundle-nsd_texas_new
+
+hydra:
+  sweep:
+    dir: ${store_data_path}/multirun/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweeper:
+    params:
+      model.d: 3
+      model.num_layers: 4
+      model.hidden_channels: 20
+      model.left_weights: True
+      model.right_weights: True
+      task.optimizer.lr: 0.02
+      task.optimizer.weight_decay: 5e-3
+      model.input_dropout: 0
+      model.dropout: 0.7
+      model.use_act: True
+      model.sparse_learner: True
+      model.normalised: True
+      data.split_idx: range(0, 10)
+      seed: 3044291017 #, 29297748, 115944586, 1193614241, 4217974420
+
+
+
