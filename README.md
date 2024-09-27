@@ -85,17 +85,16 @@ An example how to load and read results is given in `notebooks/VisualizeResults.
 If you have any questions regarding the code and its reproducibility, feel free to contact the [reference author](#authors).
 
 ## Authors
-- **Filippo Guerranti**\*:
-    > PhD student at the [DAML][daml-site] group, [Technical University of Munich (TUM)][tum-site]
-    - Email: [f.guerranti@tum.de][email-fg]
-\* Reference author
 - **David Reifferscheidt**\*:
     > Master's student at the [Technical University of Munich (TUM)][tum-site]
     - Email: [david.reifferscheidt@tum.de][email-dr]
 \* Reference author
-
+- **Filippo Guerranti**\*:
+    > PhD student at the [DAML][daml-site] group, [Technical University of Munich (TUM)][tum-site]
+    - Email: [f.guerranti@tum.de][email-fg]
+\* Reference author
 ### Citation
-If you build upon this work, please cite our paper as follows:
+If you build upon this work, please cite our paper as follows: TBD
 ```
 @inproceedings{CITATION_KEY,
     title = {{PAPER_TITLE}},
